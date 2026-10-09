@@ -1,0 +1,64 @@
+/* 文青風：紙色底、墨色字、五力各一色 */
+:root{
+  --paper:#f7f2e7; --card:#fffdf7; --ink:#3e3a32; --muted:#8a8175;
+  --line:#e3d9c4; --accent:#4a7c59; --accent2:#c96f3f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Noto Serif TC","Songti TC",Georgia,serif;line-height:1.7}
+.wrap{max-width:880px;margin:0 auto;padding:0 18px}
+.site-header{background:linear-gradient(180deg,#efe6d2,#f7f2e7);border-bottom:1px solid var(--line);padding:26px 0 0}
+.kicker{color:var(--muted);letter-spacing:.15em;font-size:13px;margin:0}
+h1{font-size:32px;margin:6px 0;letter-spacing:.05em}
+.sub{color:var(--muted);font-size:14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;padding:14px 18px 16px}
+.tabs button{font-family:inherit;border:1px solid var(--line);background:var(--card);
+  border-radius:999px;padding:8px 14px;cursor:pointer;font-size:15px}
+.tabs button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tab{display:none;padding:22px 0 40px}
+.tab.active{display:block}
+h2{font-size:22px;border-left:6px solid var(--accent2);padding-left:10px}
+.hint{color:var(--muted);font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0}
+.force-card,.score-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;cursor:pointer}
+.force-card:hover{border-color:var(--accent)}
+.force-card .icon{font-size:26px}
+.force-card b,.score-card b{font-size:18px}
+.score-card{cursor:default}
+.score-card .bar{height:8px;background:#eee2cb;border-radius:99px;margin-top:8px}
+.score-card .bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.situation{background:var(--card);border:1px dashed var(--accent2);border-radius:12px;padding:14px;font-size:18px}
+.art{margin:12px 0}
+.art svg{width:100%;max-width:520px;height:auto;display:block;border:1px solid var(--line);border-radius:12px}
+.options{display:grid;gap:10px;margin:14px 0}
+.options button{text-align:left;font-family:inherit;font-size:16px;background:var(--card);
+  border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer}
+.options button:hover{border-color:var(--accent2)}
+.options button.picked{border-color:var(--accent);background:#eef4ec}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+button{font-family:inherit;font-size:15px;border-radius:10px;border:1px solid var(--ink);
+  background:var(--card);padding:9px 16px;cursor:pointer}
+button.ghost{border-color:var(--line);color:var(--muted)}
+button.danger{border-color:#a33;color:#a33}
+.progressbar{height:10px;background:#e9dfc9;border-radius:99px;overflow:hidden}
+.progressbar div{height:100%;background:var(--accent);width:0}
+.quiz-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:14px;margin:8px 0}
+.form{display:grid;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.form label{display:grid;gap:4px;font-size:15px}
+.form input,.form select{font-family:inherit;font-size:16px;padding:8px;border:1px solid var(--line);border-radius:8px;background:#fff}
+#plan-out .week{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+.chat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;min-height:220px;max-height:340px;overflow:auto}
+.msg{margin:8px 0;max-width:85%}
+.msg.me{margin-left:auto;text-align:right}
+.msg .bubble{display:inline-block;border-radius:12px;padding:8px 12px;font-size:15px}
+.msg.bot .bubble{background:#eef4ec}
+.msg.me .bubble{background:#3e3a32;color:#fff}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.chips button{border-radius:999px;font-size:13px;border-color:var(--line)}
+#chat-form input{flex:1;font-family:inherit;font-size:15px;padding:9px;border:1px solid var(--line);border-radius:10px}
+.table-wrap{overflow:auto}
+table{border-collapse:collapse;width:100%;font-size:13px;background:#fff}
+td,th{border:1px solid var(--line);padding:6px 8px}
+canvas#radar{width:100%;max-width:520px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.foot{color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding:16px 18px 40px}
+@media print{.site-header nav,.row,#chat-form,.chips,#teacher{display:none}}

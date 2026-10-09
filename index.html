@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心智五力鍛鍊測驗｜高中生生涯規劃互動站（原型）</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="kicker">生涯探索・認識自己的心智鍛鍊五力</p>
+    <h1>心智五力鍛鍊測驗</h1>
+    <p class="sub">共 30 題（每力 6 題）｜約 15–20 分鐘｜無需登入・匿名作答｜本題庫為虛構情境原型</p>
+  </div>
+  <nav class="tabs wrap" aria-label="五個分頁">
+    <button data-tab="test" class="active">① 五力測驗</button>
+    <button data-tab="radar">② 雷達圖結果</button>
+    <button data-tab="plan">③ 21 天計畫</button>
+    <button data-tab="resource">④ 學習資源</button>
+    <button data-tab="buddy">⑤ AI 小精靈</button>
+  </nav>
+</header>
+
+<main class="wrap">
+  <!-- 分頁一：測驗 -->
+  <section id="tab-test" class="tab active">
+    <div id="force-picker"></div>
+    <div id="quiz-box" hidden>
+      <div class="quiz-meta"><span id="quiz-progress"></span><span id="quiz-total"></span></div>
+      <div class="progressbar"><div id="quiz-bar"></div></div>
+      <h2 id="quiz-force"></h2>
+      <div id="quiz-art" class="art"></div>
+      <p id="quiz-tag"></p>
+      <p id="quiz-situation" class="situation"></p>
+      <div id="quiz-options" class="options"></div>
+      <div class="row">
+        <button id="quiz-back" class="ghost">← 上一題</button>
+        <button id="quiz-quit" class="ghost">回測驗選單</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 分頁二：雷達圖 -->
+  <section id="tab-radar" class="tab">
+    <h2>我的五力雷達圖</h2>
+    <p id="radar-hint" class="hint"></p>
+    <canvas id="radar" width="520" height="440"></canvas>
+    <div id="score-cards" class="cards"></div>
+    <div class="row">
+      <button id="btn-code">產生匿名代碼</button>
+      <button id="btn-json">下載結果（JSON）</button>
+      <button id="btn-print">列印／存 PDF</button>
+    </div>
+    <p class="hint">雲端備份：下載 JSON 後，自行上傳到自己的 Google 雲端硬碟即可（本站不經手帳號）。</p>
+    <details id="teacher">
+      <summary>老師專區（本機結果一覽・僅此台裝置）</summary>
+      <div class="row">
+        <button id="btn-csv">匯出 CSV</button>
+        <button id="btn-clear" class="danger">清空本機紀錄</button>
+      </div>
+      <div class="table-wrap"><table id="teacher-table"></table></div>
+      <p class="hint">提醒：本站無後端伺服器，結果只存在作答裝置的瀏覽器。班級彙整請用匿名代碼＋匯出 CSV；請勿蒐集姓名等個資。</p>
+    </details>
+  </section>
+
+  <!-- 分頁三：21 天計畫 -->
+  <section id="tab-plan" class="tab">
+    <h2>訂出我的 21 天養成計畫</h2>
+    <form id="profile-form" class="form">
+      <label>年級
+        <select name="grade"><option>高一</option><option>高二</option><option>高三</option></select>
+      </label>
+      <label>生理性別
+        <select name="gender"><option>男</option><option>女</option><option>其他</option><option>不願填答</option></select>
+      </label>
+      <label>興趣與休閒運動 <input name="interest" placeholder="例如：打球、畫畫（可填大概就好）"></label>
+      <label>專長優勢 <input name="strength" placeholder="例如：整理筆記、帶氣氛"></label>
+      <label>想加強的一力 <select name="focus" id="plan-focus"></select></label>
+      <button type="submit">產生 21 天計畫</button>
+    </form>
+    <div id="plan-out"></div>
+  </section>
+
+  <!-- 分頁四：學習資源 -->
+  <section id="tab-resource" class="tab">
+    <h2>21 天計畫・學習資源包</h2>
+    <p class="hint">先在分頁③產生計畫，再來這裡挑每天小任務（7 選 2）與資源。資源為公開搜尋連結，文字為本站自寫摘要。</p>
+    <div id="resource-list"></div>
+    <div class="row"><button id="btn-plan-print">下載／列印我的計畫</button></div>
+  </section>
+
+  <!-- 分頁五：AI 小精靈 -->
+  <section id="tab-buddy" class="tab">
+    <h2>內心戲小劇場・AI 對話小精靈</h2>
+    <p class="hint">規則式 SEL 引導（原型版，非真人／非大型 AI）：先接住感受，再給一個小步驟。目前只在你的瀏覽器裡對話，不會上傳。</p>
+    <div id="chat-log" class="chat"></div>
+    <div class="chips" id="chat-chips"></div>
+    <form id="chat-form" class="row">
+      <input id="chat-input" placeholder="跟小精靈說說你的 OS…" autocomplete="off">
+      <button type="submit">送出</button>
+    </form>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>專注力＝願意親近喜愛事物的能力；恆毅力＝持續朝目標邁進的能力；爆發力＝關鍵時刻發揮自我的能力；穩定力＝低潮時刻修復自我的能力；孤獨力＝在群體中保有自我的能力｜呼應 SDG4（4.1／4.3／4.4／4.7）。</p>
+</footer>
+
+<script src="questions.js"></script>
+<script src="art.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
